@@ -1,8 +1,8 @@
-name: MY First GitHub Actions
+name: My First Github Actions
 
 on: [push]
 
-jobs:
+jobs: 
   build:
     runs-on: ubuntu-latest
 
@@ -18,9 +18,14 @@ jobs:
         python-version: ${{ matrix.python-version }}
 
     - name: Install dependencies
-      run:
+      run: |
         python -m pip install --upgrade pip
         pip install pytest
+
+    - name: Run tests
+      run: |
+        cd src
+        python -m pytest addition.py
 
     - name: Run tests
       run:
